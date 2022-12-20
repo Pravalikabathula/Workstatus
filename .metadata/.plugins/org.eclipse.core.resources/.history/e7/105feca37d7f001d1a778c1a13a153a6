@@ -1,0 +1,122 @@
+package com.rgt.workstatus.Entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+@Entity
+@Table(name = "team_member")
+public class TeamMember {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TEAM_MEMBER_ID")
+	private Integer teamMemberId;
+
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "UPDATED_DATE ", insertable = false)
+	private Date upadatedDate;
+
+	@Column(name = "UPDATED_BY")
+	private String updatedby;
+
+	@Column(name = "EMPLOYEE_NAME")
+	private String employeeName;
+
+	@Column(name = "STATUS")
+	private Boolean status;
+
+	@OneToOne
+	@JoinColumn(name = "FK_TEAM_ID")
+	private Team team;
+
+	@OneToOne
+	@JoinColumn(name = "FK_EMPLOYEE_ID")
+	private Employee employee;
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public Integer getTeamMemberId() {
+		return teamMemberId;
+	}
+
+	public void setTeamMemberId(Integer teamMemberId) {
+		this.teamMemberId = teamMemberId;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getUpadatedDate() {
+		return upadatedDate;
+	}
+
+	public void setUpadatedDate(Date upadatedDate) {
+		this.upadatedDate = upadatedDate;
+	}
+
+	public String getUpdatedby() {
+		return updatedby;
+	}
+
+	public void setUpdatedby(String updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+}

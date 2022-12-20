@@ -1,0 +1,123 @@
+package com.rgt.workstatus.Entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+/**
+ * @author PravalikaBathula
+ *
+ */
+@Entity
+@Table(name = "role")
+public class Roles {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ROLE_ID")
+	private Integer roleId;
+
+	@Column(name = "TITLE")
+	private String title;
+
+	@Column(name = "DESCRIPTION")
+	private String descripition;
+
+	@Column(name = "STATUS")
+	private Boolean status;
+
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "UPDATED_DATE ", insertable = false)
+	private Date upadatedDate;
+
+	@Column(name = "UPDATED_BY")
+	private String updatedby;
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescripition() {
+		return descripition;
+	}
+
+	public void setDescripition(String descripition) {
+		this.descripition = descripition;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getUpadatedDate() {
+		return upadatedDate;
+	}
+
+	public void setUpadatedDate(Date upadatedDate) {
+		this.upadatedDate = upadatedDate;
+	}
+
+	public String getUpdatedby() {
+		return updatedby;
+	}
+
+	public void setUpdatedby(String updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public Object getEmployeeid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

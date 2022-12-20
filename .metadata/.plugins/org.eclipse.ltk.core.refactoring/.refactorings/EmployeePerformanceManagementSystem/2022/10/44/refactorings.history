@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.rgt.workstatus.NotFound.RolesnotfoundException.java&apos; to &apos;RolesNotFoundException.java&apos;&#x0D;&#x0A;- Original project: &apos;EmployeePerformanceManagementSystem&apos;&#x0D;&#x0A;- Original element: &apos;com.rgt.workstatus.NotFound.RolesnotfoundException.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.rgt.workstatus.NotFound.RolesNotFoundException.java&apos;" description="Rename compilation unit &apos;RolesnotfoundException.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.rgt.workstatus.NotFound{RolesnotfoundException.java" name="RolesNotFoundException.java" references="false" stamp="1666777285971" version="1.0"/>
+</session>

@@ -1,0 +1,29 @@
+package com.rgt.workstatus.Domain;
+
+import java.util.Date;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Team {
+	private Integer teamId;
+	private String teamLeadName;
+	private boolean status;
+	private Date createdDate;
+	private String createdBy;
+	private Date upadatedDate;
+	private String updatedby;
+
+	private List<Employee> employee;
+	private DepartmentDomain department;
+
+}

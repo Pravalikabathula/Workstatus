@@ -1,0 +1,34 @@
+package com.rgt.workstatus.DAO;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Repository;
+
+import com.rgt.workstatus.Entity.Employee;
+
+@Repository
+public interface EmployeeDao {
+
+	Page<Employee> getEmployeesBySort(Integer offset, Integer limit);
+
+	List<Employee> getAllEmployeesDetails(Integer offset, Integer limit);
+
+	// List<Employee> getAllEmployeesDetails(Integer offset, Integer limit, String
+	// Sortby);
+
+	// public Employee getByEmpId(Integer employeeId);
+
+	Employee updateEmployeeProfile(Employee employee);
+
+	Employee saveEmployeeDetails(Employee employee);
+
+	Boolean deleteEmployeeById(Integer employeeId);
+
+	List<Employee> getAllEmployees(Integer offset, Integer limit);
+
+	List<Employee> searchByEmployee(String Search);
+
+	Employee getById(Integer employeeId);
+
+}

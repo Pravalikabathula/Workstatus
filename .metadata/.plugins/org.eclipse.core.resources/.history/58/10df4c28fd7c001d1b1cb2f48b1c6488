@@ -1,0 +1,260 @@
+package com.rgt.workstatus.Entity;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+@Table(name = "employee")
+public class Employee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EMPLOYEE_ID", unique = true, nullable = false)
+	private Integer employeeId; // Unique Id and the primary key for Employee table.
+
+//	@NotBlank(message = "Plese Enter a valid Emain Address")
+//	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
+//			// Accept like Case Sensitive
+//			flags = Pattern.Flag.CASE_INSENSITIVE)
+
+	/*
+	 * @Transient private String empPassword2;
+	 */ // Just a confirmation field used for validation. Not saved/updated.
+
+	@Column(name = "FIRST_NAME", nullable = false)
+	private String firstName;
+
+	@Column(name = "MIDDLE_NAME")
+	private String middleName;
+
+	@Column(name = "LAST_NAME", nullable = false)
+	private String lastName;
+
+	@Column(name = "USERNAME", nullable = false)
+	private String username;
+
+	@Column(name = "JOB_TITLE ")
+	private String jobtitle;
+
+	@Column(name = "REPORTING_TO", nullable = false)
+	private String reportingto;
+
+	@Column(name = "EMAIL", nullable = false)
+	private String email; // Primary EmailId/User Name of the user.
+
+	@Column(name = "MOBILE_NO")
+	private String mobilenumber;
+
+	@Column(nullable = false)
+	private String password; // This will be stored as a Hash value.
+
+	@Column(name = "LAST_LOGIN")
+	private String lastlogin;
+
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "UPDATED_DATE", insertable = false)
+	private Date updateDate;
+
+	@Column(name = "UPDATED_BY")
+	private String updatedby;
+
+	@Column(name = "STATUS")
+	private Boolean status;
+
+//	@Column(nullable = false)
+//	private String gender;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_DEPARTMENT_ID", referencedColumnName = "DEPARTMENT_ID")
+	private DepartmentEntity department;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_ROLE_ID", referencedColumnName = "ROLE_ID")
+	private Roles role;
+
+	@OneToMany
+	@JoinColumn(name = "FK_TASK_ID", referencedColumnName = "TASK_ID")
+	private List<Task> tasks;
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public Roles getRole() {
+		return role;
+	}
+
+	public void setRole(Roles role) {
+		this.role = role;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getJobtitle() {
+		return jobtitle;
+	}
+
+	public void setJobtitle(String jobtitle) {
+		this.jobtitle = jobtitle;
+	}
+
+	public String getReportingto() {
+		return reportingto;
+	}
+
+	public void setReportingto(String reportingto) {
+		this.reportingto = reportingto;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobilenumber() {
+		return mobilenumber;
+	}
+
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getLastlogin() {
+		return lastlogin;
+	}
+
+	public void setLastlogin(String lastlogin) {
+		this.lastlogin = lastlogin;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getUpdatedby() {
+		return updatedby;
+	}
+
+	public void setUpdatedby(String updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public DepartmentEntity getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(DepartmentEntity department) {
+		this.department = department;
+	}
+
+}

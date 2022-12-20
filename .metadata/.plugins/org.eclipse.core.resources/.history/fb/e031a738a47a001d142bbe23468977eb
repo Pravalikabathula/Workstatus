@@ -1,0 +1,29 @@
+package com.rgt.workstatus.Domain;
+
+import java.util.Date;
+
+import com.rgt.workstatus.Entity.Employee;
+import com.rgt.workstatus.Entity.Team;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Task {
+	private Integer taskId;
+	private String taskName;
+	private Date startDate;
+	private Date endDate;
+	private Boolean status;
+
+	private Team teams;
+	private Employee employees;
+
+}

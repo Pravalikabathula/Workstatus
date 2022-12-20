@@ -1,0 +1,133 @@
+package com.rgt.workstatus.Entity;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+@Entity
+@Table(name = "team")
+public class Team {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TEAM_ID")
+	private Integer teamId;
+
+	@Column(name = "TEAM_LEAD_NAME")
+	private String teamLeadName;
+
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "UPDATED_DATE ", insertable = false)
+	private Date upadatedDate;
+
+	@Column(name = "UPDATED_BY")
+	private String updatedby;
+
+	@Column(name = "STATUS")
+	private Boolean status;
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")
+	private Employee employees;
+
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "FK_DEPARTMENT_ID", referencedColumnName = "DEPARTMENT_ID")
+//	private List<DepartmentEntity> department;
+//
+//	public List<DepartmentEntity> getDepartment() {
+//		return department;
+//	}
+//
+//	public void setDepartment(List<DepartmentEntity> department) {
+//		this.department = department;
+//	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public Employee getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Employee employees) {
+		this.employees = employees;
+	}
+
+	public Integer getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
+	}
+
+	public String getTeamLeadName() {
+		return teamLeadName;
+	}
+
+	public void setTeamLeadName(String teamLeadName) {
+		this.teamLeadName = teamLeadName;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getUpadatedDate() {
+		return upadatedDate;
+	}
+
+	public void setUpadatedDate(Date upadatedDate) {
+		this.upadatedDate = upadatedDate;
+	}
+
+	public String getUpdatedby() {
+		return updatedby;
+	}
+
+	public void setUpdatedby(String updatedby) {
+		this.updatedby = updatedby;
+	}
+
+}

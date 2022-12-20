@@ -1,0 +1,17 @@
+package com.rgt.workstatus.Controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmployeeRoles {
+
+	private final static Logger logger = LoggerFactory.getLogger(Roles.class);
+
+	@RequestMapping(value = "/util/EmployeeRoles", method = RequestMethod.GET)
+	public String show(Model model, HttpServletRequest request) {
+		logger.debug("addDeliveryServiceAreaPage:INVOKED");
+		model.addAttribute("roles", new Roles());
+		return "util/roles";
+	}
+
+}
